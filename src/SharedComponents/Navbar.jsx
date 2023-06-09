@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../assets/logo.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
+ 
+    const { user, logOut } = useContext(AuthContext);
+     
+  
+    const handleLogOut = () => {
+      logOut()
+        .then(() => {})
+        .catch((error) => console.log(error));
+    };
     const navItem= <>
        <li><a>Item 1</a></li>
         <li>
@@ -13,13 +23,18 @@ const Navbar = () => {
     </>
     const LogItem= <>
    
-      <Link>logOut</Link>
-    //      <label   className=" avatar">
-    //     <div className="w-10 rounded-full">
-    //       {/* <img src={user.photoUrl } /> */}
-    //     </div>
-    //   </label>
-         <Link to="/login">Login</Link>
+      {
+        user?<>
+      
+            
+      <div className=" me-2">
+         <img className='w-10 h-10   rounded-full' src={user.photoURL } />
+      </div>
+    
+      <Link className='btn' onClick={handleLogOut}>logOut</Link>
+     </>:
+       <Link to="/login">Login</Link>
+      }
  
     </>
     return (
