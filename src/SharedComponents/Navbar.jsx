@@ -14,11 +14,11 @@ const Navbar = () => {
         .catch((error) => console.log(error));
     };
     const navItem= <>
-       <li><a>Item 1</a></li>
+       <li><Link to="/">Home</Link></li>
         <li>
-          <a>Parent</a>
+          <Link to="/classes">Our Classes</Link>
         </li>
-        <li><a>Item 3</a></li>
+        <li><Link to="/instructors">Our Instructor</Link></li>
     
     </>
     const LogItem= <>
