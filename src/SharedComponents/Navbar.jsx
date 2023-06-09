@@ -1,15 +1,26 @@
 import React from 'react';
 import logo from '../assets/logo.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const navItem= <>
        <li><a>Item 1</a></li>
         <li>
           <a>Parent</a>
-           
         </li>
         <li><a>Item 3</a></li>
     
+    </>
+    const LogItem= <>
+   
+      <Link>logOut</Link>
+    //      <label   className=" avatar">
+    //     <div className="w-10 rounded-full">
+    //       {/* <img src={user.photoUrl } /> */}
+    //     </div>
+    //   </label>
+         <Link to="/login">Login</Link>
+ 
     </>
     return (
         <div className="navbar max-w-7xl mx-auto">
@@ -39,7 +50,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+     {LogItem}
   </div>
 </div>
     );
