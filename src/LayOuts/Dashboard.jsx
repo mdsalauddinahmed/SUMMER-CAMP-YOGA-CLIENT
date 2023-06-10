@@ -3,8 +3,10 @@ import { FaHome, FaShoppingCart } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../SharedComponents/Navbar';
 import Footer from '../SharedComponents/Footer/Footer';
+import UseTanstack from '../Hooks/UseTanstack/UseTanstack';
 
 const Dashboard = () => {
+    const [cart]=UseTanstack()
     return (
         <div>
  <Navbar></Navbar>
@@ -27,7 +29,7 @@ const Dashboard = () => {
       <li><Link>
       <button className="btn">
      <FaShoppingCart></FaShoppingCart>
-     <div className="badge ">+0</div>
+     <div className="badge ">+{cart?.length || 0}</div>
     </button>
       </Link></li>
     </ul>

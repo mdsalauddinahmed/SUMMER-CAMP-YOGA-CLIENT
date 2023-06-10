@@ -11,7 +11,7 @@ const SingleClass = ({item}) => {
     
     const handlePurchase=item=>{
          if(user){
-            const orderClass ={ClassId:_id,Price,seats,email,name,category}
+            const orderClass ={ClassId:_id,Price,seats,email:user?.email,name,category}
             fetch(`http://localhost:5100/purchase`,{
                 method:"post",
                 headers:{
