@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaHome } from 'react-icons/fa';
-import { NavLink, Outlet } from 'react-router-dom';
+import { FaHome, FaShoppingCart } from 'react-icons/fa';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../SharedComponents/Navbar';
 import Footer from '../SharedComponents/Footer/Footer';
 
@@ -22,7 +22,14 @@ const Dashboard = () => {
     <ul className="menu p-4 w-80 h-full mt-24 text-white">
       {/* Sidebar content here */}
       <li><NavLink to="/dashboard/addClass">Add Class</NavLink></li>
-      <li><a>Sidebar Item 2</a></li>
+
+      <div className='divider '>--------------------------------------------------------------------------------</div>
+      <li><Link>
+      <button className="btn">
+     <FaShoppingCart></FaShoppingCart>
+     <div className="badge ">+0</div>
+    </button>
+      </Link></li>
     </ul>
   
   </div>
