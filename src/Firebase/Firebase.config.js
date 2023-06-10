@@ -13,12 +13,7 @@ const firebaseConfig = {
   appId:  import.meta.env.VITE_appId
 
 
-//   apiKey: "AIzaSyC8dEyoaE8ma_2gfO-EbEysP9sywW8mFYo",
-//   authDomain: "mindful-bliss.firebaseapp.com",
-//   projectId: "mindful-bliss",
-//   storageBucket: "mindful-bliss.appspot.com",
-//   messagingSenderId: "67441135818",
-//   appId: "1:67441135818:web:02c5fb3feb6653a86ae433"
+ 
 };
 
 // Initialize Firebase
