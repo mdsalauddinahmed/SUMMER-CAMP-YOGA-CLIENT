@@ -6,11 +6,16 @@ import { AuthContext } from '../../Provider/AuthProvider';
 
 const SignUp = () => {
     const {createUser,updateUserProfile}=useContext(AuthContext)
+    const [confirmPassword,setConfirmPassword]=useState(" ")
 
     const [showPassword, setShowPassword] = useState(false);
     const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-
+               
+      // if(data.password !== confirmPassword){
+      //   alert("password didn't match")
+      // }
+     
         createUser(data.email,data.password)
         .then(result=>{
             const createdUser=result.user;
@@ -97,16 +102,17 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">Confirm password</span>
           </label>
-          <input type="password"   {...register("password",
+          <input type="password"   {...register("confirmPassword",
           { required: true,
               minLength:6,
               maxLength:20,
               pattern:/(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])/,
-              validate: (value) =>
-           value === watch('password') || 'Passwords do not match',
+           
           }
-          )} name='confirmPassword' placeholder="password" className="input input-bordered" />
-          {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+          )} onChange={(e)=>setConfirmPassword(e.target.value)}
+           name='confirmPassword'
+           value={confirmPassword} placeholder="Confirm password" className="input input-bordered" />
+           
            
        
         </div> */}

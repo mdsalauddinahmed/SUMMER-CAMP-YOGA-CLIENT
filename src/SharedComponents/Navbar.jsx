@@ -19,26 +19,30 @@ const Navbar = () => {
           <Link to="/classes">Our Classes</Link>
         </li>
         <li><Link to="/instructors">Our Instructor</Link></li>
-    
+      {
+        user?<li><Link className='me-4' to="/dashboard">Dashboard</Link></li>:" "
+      }
     </>
     const LogItem= <>
    
       {
         user?<>
       
-            
+           
       <div className=" me-2">
          <img className='w-10 h-10   rounded-full' src={user.photoURL } />
       </div>
     
-      <Link className='btn' onClick={handleLogOut}>logOut</Link>
+    <Link className='btn' onClick={handleLogOut}>logOut</Link> 
      </>:
-       <Link to="/login">Login</Link>
+       <li><Link to="/login">Login</Link></li>
       }
  
     </>
     return (
-        <div className="navbar max-w-7xl mx-auto">
+     
+          <div className=" navbar   fixed z-10 opacity-60 bg-black text-white  ">
+  
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -57,7 +61,7 @@ const Navbar = () => {
          Mindful-bliss
     </a>
   </div>
-  <div className="navbar-center hidden lg:flex">
+  <div className=" navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
        {
         navItem
@@ -67,7 +71,9 @@ const Navbar = () => {
   <div className="navbar-end">
      {LogItem}
   </div>
-</div>
+  </div>
+ 
+ 
     );
 };
 
