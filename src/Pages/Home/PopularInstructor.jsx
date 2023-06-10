@@ -21,7 +21,7 @@ const PopularInstructor = () => {
         modules={[Pagination]}
         className="mySwiper mb-24"
       >
-        <SwiperSlide className='bg-green-600'>
+        <SwiperSlide className='bg-cyan-800'>
             <img  src={img3} alt="" />
             <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
             <div className='flex gap-4 text-white font-bold '>
@@ -29,7 +29,7 @@ const PopularInstructor = () => {
                 <p>Email:amir@gmail.com</p>
             </div>
         </SwiperSlide>
-        <SwiperSlide className='bg-green-600'>
+        <SwiperSlide className='bg-cyan-800'>
             <img  src={img3} alt="" />
             <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
             <div className='flex gap-4 text-white font-bold '>
@@ -37,7 +37,7 @@ const PopularInstructor = () => {
                 <p>Email:amir@gmail.com</p>
             </div>
         </SwiperSlide>
-        <SwiperSlide className='bg-green-600'>
+        <SwiperSlide className='bg-cyan-800'>
             <img  src={img3} alt="" />
             <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
             <div className='flex gap-4 text-white font-bold '>
@@ -45,7 +45,7 @@ const PopularInstructor = () => {
                 <p>Email:amir@gmail.com</p>
             </div>
         </SwiperSlide>
-        <SwiperSlide className='bg-green-600'>
+        <SwiperSlide className='bg-cyan-800'>
             <img  src={img3} alt="" />
             <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
             <div className='flex gap-4 text-white font-bold '>
@@ -53,7 +53,7 @@ const PopularInstructor = () => {
                 <p>Email:amir@gmail.com</p>
             </div>
         </SwiperSlide>
-        <SwiperSlide className='bg-green-600'>
+        <SwiperSlide className='bg-cyan-800'>
             <img  src={img3} alt="" />
             <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
             <div className='flex gap-4 text-white font-bold '>
@@ -61,7 +61,7 @@ const PopularInstructor = () => {
                 <p>Email:amir@gmail.com</p>
             </div>
         </SwiperSlide>
-        <SwiperSlide className='bg-green-600'>
+        <SwiperSlide className='bg-cyan-800'>
             <img  src={img3} alt="" />
             <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
             <div className='flex gap-4 text-white font-bold '>

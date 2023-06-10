@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import contact from '../../assets/support.png'
 import { FaAdn } from "react-icons/fa";
 import { AuthContext } from '../../Provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const {createUser,updateUserProfile}=useContext(AuthContext)
@@ -33,17 +34,17 @@ const SignUp = () => {
     };
 
   return (
-    <>
-         <h1 className='text-center font-medium mt-12 text-4xl'>Please Register now</h1>
-     <div className='flex lg:flex-col-1 items-center justify-center max-w-7xl mx-auto my-20'>
+    <div className='py-20 bg-cyan-800'>
+         <h1 className='text-center font-medium mt-12 text-4xl text-white'>Please Register now</h1>
+     <div className='flex lg:flex-col-1 items-center sm:flex-row-reverse justify-center max-w-7xl mx-auto my-20'>
          <div>
           
-            <img src={contact} alt="" />
+            <img className='' src={contact} alt="" />
          </div>
            <form  onSubmit={handleSubmit(onSubmit)}  className="card-body">
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Name</span>
+            <span className="label-text font-bold text-white">Name</span>
           </label>
           <input type="name" {...register("name",{ required: true })} placeholder="name" name='name'
            className="input input-bordered" />
@@ -51,14 +52,14 @@ const SignUp = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">PhotoUrl</span>
+            <span className="label-text font-bold text-white">PhotoUrl</span>
           </label>
           <input type="photo" {...register("photo",{ required: true })} placeholder="photo" name='photo' className="input input-bordered" />
           {errors.photo && <span className='text-red-600'> photo is required</span>}
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text font-bold text-white">Email</span>
           </label>
           <input type="email" {...register("email",{ required: true })} placeholder="email" name='email' className="input input-bordered" />
           {errors.email && <span className='text-red-600'> Name is required</span>}
@@ -67,7 +68,7 @@ const SignUp = () => {
         <div className='flex items-center  '>
          <div>
          <label className="label">
-            <span className="label-text">Password</span>
+            <span className="label-text font-bold text-white">Password</span>
           </label>
           <input type={showPassword ? 'text' : 'password'}
    
@@ -81,9 +82,11 @@ const SignUp = () => {
          </div>
 
 <span>
-       {showPassword ? (<>
- <FaAdn onClick={() => setShowPassword(false)}></FaAdn>
- <span>hide</span></>
+       {showPassword ? (<div className="flex items-center ">
+                <FaAdn onClick={() => setShowPassword(false)}></FaAdn>
+                  <span className="text-white">hide</span>
+                </div>
+                
   
 ) : ( <>
 <FaAdn onClick={() => setShowPassword(true)} />
@@ -119,10 +122,11 @@ const SignUp = () => {
          
         <div className="form-control mt-6">
            
-          <input type="submit"  value={"register"} className="btn bg-green-900 text-white"  />
+          <input type="submit"  value={"register"} className="btn bg-cyan-900 text-white border-0"  />
+          <p>Already have an Account?please <Link className='text-red-600' to="/login">Login</Link></p>
         </div>
       </form>
-     </div></>
+     </div></div>
   );
 };
 

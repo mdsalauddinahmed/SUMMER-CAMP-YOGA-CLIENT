@@ -29,11 +29,13 @@ const Navbar = () => {
         user?<>
       
            
-      <div className=" me-2">
-         <img className='w-10 h-10   rounded-full' src={user.photoURL } />
-      </div>
+ 
+       <div className='flex'>
+       <img className='w-10 h-10   rounded-full' src={user.photoURL } />
+     
     
-    <Link className='btn' onClick={handleLogOut}>logOut</Link> 
+     <Link className='btn' onClick={handleLogOut}>logOut</Link>  
+       </div>
      </>:
        <li><Link to="/login">Login</Link></li>
       }
@@ -41,7 +43,7 @@ const Navbar = () => {
     </>
     return (
      
-          <div className=" navbar   fixed z-10 opacity-60 bg-black text-white  ">
+          <div className=" navbar  fixed z-10 opacity-60 bg-black text-white  ">
   
   <div className="navbar-start">
     <div className="dropdown">
@@ -53,7 +55,7 @@ const Navbar = () => {
       </ul>
     </div>
     <label tabIndex={0} className=" avatar">
-        <div className="w-10 rounded-full">
+        <div className="w-10 lg:ms-20 rounded-full">
           <img src={logo} />
         </div>
       </label>
@@ -69,7 +71,9 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-     {LogItem}
+  <ul className='lg:me-20'>
+  {LogItem}
+  </ul>
   </div>
   </div>
  

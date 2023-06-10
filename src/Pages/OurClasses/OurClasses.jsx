@@ -14,7 +14,7 @@ const OurClasses = () => {
       }, []);
       console.log(allClasses)
     return (
-        <div className='pt-20'>
+        <div className='pt-20 max-w-7xl mx-auto'>
             <Title heading={"Our All Classes"}></Title>
              
 
