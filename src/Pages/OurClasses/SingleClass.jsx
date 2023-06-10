@@ -1,11 +1,53 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const SingleClass = ({item}) => {
 
-    const{Price,seats,email}=item
+    const{Price,seats,email,_id,name,category}=item
+    const {user} =useContext(AuthContext)
+    const navigate =useNavigate()
     
     const handlePurchase=item=>{
-        console.log(item)
+         if(user){
+            const orderClass ={ClassId:_id,Price,seats,email,name,category}
+            fetch(`http://localhost:5100/purchase`,{
+                method:"post",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(orderClass)
+            })
+            .then(res=>res.json())
+            .then(data =>{
+                 
+                if(data.insertedId){
+                    Swal.fire({
+                        position:'top-end',
+                        icon: 'success',
+                        title: 'Your work has been saved',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            })
+         }
+         else{
+            Swal.fire({
+                title: 'Please login to purchase the class',
+                 
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'please login'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  navigate('/login')
+                }
+              })
+         }
     }
     
     return (

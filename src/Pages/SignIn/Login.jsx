@@ -2,13 +2,20 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import contact from "../../assets/support.png";
 import { FaAdn } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import google from "../../assets/google.png";
 const Login = () => {
   const { signIn, googleSignIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+
+  const navigate =useNavigate();
+   
+   const location =useLocation();
+   const from = location.state?.from?.pathname ||  "/";
+
+
   const {
     register,
     reset,
@@ -29,6 +36,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(from,{replace:true});
     });
   };
 

@@ -12,7 +12,7 @@ const OurClasses = () => {
              setAllClasses(data);
           });
       }, []);
-      console.log(allClasses)
+      
     return (
         <div className='pt-20 max-w-7xl mx-auto'>
             <Title heading={"Our All Classes"}></Title>
