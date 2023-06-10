@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome, FaShoppingCart } from 'react-icons/fa';
+import { FaHome, FaPaypal, FaShoppingCart } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../SharedComponents/Navbar';
 import Footer from '../SharedComponents/Footer/Footer';
@@ -26,12 +26,17 @@ const Dashboard = () => {
       <li><NavLink to="/dashboard/addClass">Add Class</NavLink></li>
 
       <div className='divider '>--------------------------------------------------------------------------------</div>
-      <li><Link>
-      <button className="btn">
+       
+      <li>
+   
+     <NavLink to="/dashboard/addCart">
      <FaShoppingCart></FaShoppingCart>
-     <div className="badge ">+{cart?.length || 0}</div>
-    </button>
-      </Link></li>
+      +{cart?.length || 0}
+     </NavLink>
+      </li>
+      
+    
+      <li><NavLink to="/dashboard/payment"><FaPaypal></FaPaypal>Payment</NavLink></li>
     </ul>
   
   </div>

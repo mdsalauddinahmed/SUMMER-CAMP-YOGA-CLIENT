@@ -7,6 +7,7 @@ import OurClasses from "../Pages/OurClasses/OurClasses";
 import Instructor from "../Pages/Instructors/Instructor";
 import Dashboard from "../LayOuts/Dashboard";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
+import AddCart from "../Pages/Dashboard/AddCart/AddCart";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         {
           path:'addClass',
           element:<AddClass></AddClass>
+        },
+        {
+          path:'addCart',
+          element:<AddCart></AddCart>
         }
       ]
     }
