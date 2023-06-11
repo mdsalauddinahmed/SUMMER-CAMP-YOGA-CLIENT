@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Title from '../../../Hooks/Title';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const AddClass = () => {
     const { register, handleSubmit, reset } = useForm();
+    const{user}=useContext(AuthContext)
     const onSubmit = data => {
         console.log(data.name)
          const{email,name,image,price,seats,category}=data
@@ -55,7 +57,7 @@ const AddClass = () => {
                     <label className="label">
                         <span className="label-text text-white font-bold">Instructor Name:</span>
                     </label>
-                    <input type="text" placeholder="Class Name"
+                    <input type="text" placeholder=" Name"
                         {...register("name", { required: true, maxLength: 120 })}
                         className="input input-bordered w-full " />
                 </div>
@@ -63,7 +65,7 @@ const AddClass = () => {
                     <label className="label">
                         <span className="label-text text-white font-bold">Instructor Email:</span>
                     </label>
-                    <input type="email" placeholder="Email"
+                    <input type="email" placeholder="Email"  
                         {...register("email", { required: true, maxLength: 120 })}
                         className="input input-bordered w-full " />
                 </div>

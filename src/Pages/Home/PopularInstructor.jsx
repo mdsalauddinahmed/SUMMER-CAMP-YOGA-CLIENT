@@ -1,79 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Title from '../../Hooks/Title';
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper";
-import img3 from '../../assets/cover3.jpg'
+import SingleInstructor from '../Instructors/SingleInstructor';
+ 
 
 const PopularInstructor = () => {
+    const [teacher,setTeacher]=useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:5100/allInstructors')
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setTeacher(data)
+        })
+    },[])
     return (
         <div className='max-w-7xl mx-auto'>
             <Title heading={"Our Popular Instructors"}></Title>
-            <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        centeredSlides={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper mb-24"
-      >
-        <SwiperSlide className='bg-cyan-800'>
-            <img  src={img3} alt="" />
-            <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
-            <div className='flex gap-4 text-white font-bold '>
-                <h2>Name:Amir</h2>
-                <p>Email:amir@gmail.com</p>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide className='bg-cyan-800'>
-            <img  src={img3} alt="" />
-            <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
-            <div className='flex gap-4 text-white font-bold '>
-                <h2>Name:Amir</h2>
-                <p>Email:amir@gmail.com</p>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide className='bg-cyan-800'>
-            <img  src={img3} alt="" />
-            <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
-            <div className='flex gap-4 text-white font-bold '>
-                <h2>Name:Amir</h2>
-                <p>Email:amir@gmail.com</p>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide className='bg-cyan-800'>
-            <img  src={img3} alt="" />
-            <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
-            <div className='flex gap-4 text-white font-bold '>
-                <h2>Name:Amir</h2>
-                <p>Email:amir@gmail.com</p>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide className='bg-cyan-800'>
-            <img  src={img3} alt="" />
-            <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
-            <div className='flex gap-4 text-white font-bold '>
-                <h2>Name:Amir</h2>
-                <p>Email:amir@gmail.com</p>
-            </div>
-        </SwiperSlide>
-        <SwiperSlide className='bg-cyan-800'>
-            <img  src={img3} alt="" />
-            <h3 className="text-4xl text-center uppercase   text-white ">Amir</h3>
-            <div className='flex gap-4 text-white font-bold '>
-                <h2>Name:Amir</h2>
-                <p>Email:amir@gmail.com</p>
-            </div>
-        </SwiperSlide>
-        
-        
-        
-      </Swiper>
-
+           
+            <div className='grid lg:grid-cols-2 gap-4 py-8 m-4'>
+                {
+          teacher.slice(0,6).map(item=><SingleInstructor item={item} key={item.name}></SingleInstructor>)
+                }
+             </div>
             
         </div>
     );

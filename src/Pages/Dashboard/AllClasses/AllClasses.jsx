@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import UseTanstack from '../../../Hooks/UseTanstack/UseTanstack';
+import Title from '../../../Hooks/Title';
 
 const AllClasses = () => {
     const [,refetch]=UseTanstack()
@@ -55,6 +56,7 @@ const AllClasses = () => {
     }
     return (
         <div className='w-full'>
+            <Title heading={"All classes here"}></Title>
             <table className="table w-full border-2">
     {/* head */}
     <thead className='bg-cyan-800 text-white' >

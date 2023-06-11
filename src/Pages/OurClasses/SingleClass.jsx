@@ -10,6 +10,7 @@ const SingleClass = ({item}) => {
     const navigate =useNavigate()
     
     const handlePurchase=item=>{
+        
          if(user){
             const orderClass ={ClassId:_id,Price,seats,email:user?.email,name,category}
             fetch(`http://localhost:5100/purchase`,{
@@ -54,7 +55,7 @@ const SingleClass = ({item}) => {
         <div>
             
             <div className="card w-96 bg-base-100 shadow-xl">
-  <figure><img className='w-80 h-44 rounded-3xl' src={item.image} alt="Shoes" /></figure>
+  <figure><img className='w-80 h-44 rounded-3xl pt-4' src={item.image} alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title font-bold"><span>Instructor Name:</span> {item.name}</h2>
     <h3><span className='font-bold'>Instructor Email:</span> {email}</h3>
