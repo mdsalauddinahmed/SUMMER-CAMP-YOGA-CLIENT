@@ -42,11 +42,27 @@ const Login = () => {
 
   const handleGoogle = () => {
     googleSignIn()
-      .then((result) => {
-        const loggedByGoogle = result.user;
-        console.log(loggedByGoogle);
+    .then(result =>{
+      const loggedUser = result.user;
+      const saveUser = {name:loggedUser.displayName,email:loggedUser.email}
+      fetch(`http://localhost:5100/users`,{
+       method:"POST",
+       headers:{
+         'content-type':'application/json'
+       },
+       body:JSON.stringify(saveUser)
+
       })
-      .catch((error) => console.log(error));
+      .then(res=>res.json())
+      .then(()=>{
+    
+          navigate(from,{replace:true});
+  
+      })
+     
+    
+
+ }) 
   };
 
   return (

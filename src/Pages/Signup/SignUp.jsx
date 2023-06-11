@@ -3,11 +3,13 @@ import { useForm } from 'react-hook-form';
 import contact from '../../assets/support.png'
 import { FaAdn } from "react-icons/fa";
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
     const {createUser,updateUserProfile}=useContext(AuthContext)
     const [confirmPassword,setConfirmPassword]=useState(" ")
+    const navigate =useNavigate()
 
     const [showPassword, setShowPassword] = useState(false);
     const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
@@ -23,16 +25,41 @@ const SignUp = () => {
             console.log(createdUser)
             updateUserProfile(data.name,data.photo)
              
-                .then(data=> 
-                    console.log(data.user)
-                 )
+                .then(()=> {
+                  const saveUser = {name: data.name, email: data.email}
+                  fetch(`http://localhost:5100/users`,{
+                  method:"POST",
+                  headers:{
+                    'content-type':'application/json'
+                  },
+                  body:JSON.stringify(saveUser)
+
+                 })
+                 .then(res=>res.json())
+                 .then(data=>{
+                  if(data.insertedId){
+                    reset();
+                    Swal .fire({
+                      position: 'User profile updated ',
+                      icon: 'success',
+                      title: 'profile updated',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
+                    navigate("/")
+
+                  }
+                 })
+ 
+                   }
+                )
                 
              .catch((error)=>{
                 console.log(error)
                })
         })
-    };
-
+    
+      }
   return (
     <div className='py-20 bg-cyan-800'>
          <h1 className='text-center font-medium mt-12 text-4xl text-white'>Please Register now</h1>
@@ -126,8 +153,9 @@ const SignUp = () => {
           <p>Already have an Account?please <Link className='text-red-600' to="/login">Login</Link></p>
         </div>
       </form>
-     </div></div>
-  );
-};
+     </div>
+     </div>
+  )};
+      
 
 export default SignUp;
