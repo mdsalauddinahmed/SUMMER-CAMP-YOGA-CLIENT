@@ -37,7 +37,7 @@ const Navbar = () => {
      <Link className='btn' onClick={handleLogOut}>logOut</Link>  
        </div>
      </>:
-       <li><Link to="/login">Login</Link></li>
+       <li className='btn'><Link to="/login">Login</Link></li>
       }
  
     </>
@@ -59,8 +59,8 @@ const Navbar = () => {
           <img src={logo} />
         </div>
       </label>
-    <a className="btn btn-ghost normal-case text-xl">
-         Mindful-bliss
+    <a className="btn btn-ghost   text-xl uppercase">
+         Mindful-bliss-Yoga
     </a>
   </div>
   <div className=" navbar-center hidden lg:flex">

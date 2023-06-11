@@ -18,7 +18,7 @@ const OurClasses = () => {
             <Title heading={"Our All Classes"}></Title>
              
 
-            <div className='grid md:grid-cols-3 py-20'>
+            <div className='grid md:grid-cols-3 py-20 gap-4'>
                 {
                     allClasses?.map(item=><SingleClass item={item} key={item?._id}></SingleClass>)
                 }

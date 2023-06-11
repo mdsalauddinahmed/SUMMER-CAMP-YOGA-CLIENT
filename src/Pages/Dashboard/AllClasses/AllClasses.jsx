@@ -1,11 +1,26 @@
-import React from 'react';
-import UseTanstack from '../../../Hooks/UseTanstack/UseTanstack';
+import React, { useEffect, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import UseTanstack from '../../../Hooks/UseTanstack/UseTanstack';
 
-const AddCart = () => {
-    const [cart,refetch]=UseTanstack()
-    const handleDelete = item =>{
+const AllClasses = () => {
+    const [,refetch]=UseTanstack()
+    const [allClasses,setAllClasses]=useState([])
+
+     
+
+
+
+    useEffect(() => {
+        fetch("http://localhost:5100/allClasses")
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+             setAllClasses(data);
+          });
+      }, []);
+
+      const handleDelete = item =>{
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -16,7 +31,7 @@ const AddCart = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5100/purchase/${item._id}`,{
+              fetch(`http://localhost:5100/allClasses/${item._id}`,{
                 method:"DELETE",
                 headers:{
 
@@ -38,43 +53,41 @@ const AddCart = () => {
             }
           }) 
     }
-    const total =cart.reduce((sum,item)=>item.Price+sum,0)
     return (
-        <div>
-        <div className='flex gap-28 font-bold'>
-            <h2>Total Class Item: {cart?.length} </h2>
-            <p>Total Price: ${total}</p>
-            <button className='btn text-white bg-cyan-700 btn-sm'>pay</button>
-        </div>
-        
-          
-        <div className='overflow-x-auto'>
-  <table className="table w-full border-2">
+        <div className='w-full'>
+            <table className="table w-full border-2">
     {/* head */}
     <thead className='bg-cyan-800 text-white' >
       <tr >
         <th>
-         
+         #
         </th>
+        <th>Image</th>
         <th>Class Name</th>
         <th>Instructor Name</th>
-    
+        <th>Available Seats</th>
         <th>Price</th>
         <th>Action</th>
       </tr>
     </thead>
     <tbody className='sticky'>
       { 
-      cart.map((item,index)=><tr key={item._id}>
+      allClasses.map((item,index)=><tr key={item._id}>
       <td>
          {index+1}
       </td>
-       
+       <td>
+       <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={item?.image} alt="image" />
+              </div>
+            </div>
+       </td>
       <td>
         {item.category}
       </td>
       <td>{item.name}</td>
- 
+      <td>{item.Price}</td>
       <td className='text-start'>${item.Price}</td>
       <td>
         <button onClick={()=>handleDelete(item)} className="btn btn-ghost btn-lg text-white  bg-cyan-700 "><FaTrashAlt></FaTrashAlt></button>
@@ -87,12 +100,9 @@ const AddCart = () => {
     
     
   </table>
-</div>
-
-
-
+            
         </div>
     );
 };
 
-export default AddCart;
+export default AllClasses;
