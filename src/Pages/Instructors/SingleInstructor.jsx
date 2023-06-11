@@ -3,7 +3,7 @@ import React from 'react';
 const SingleInstructor = ({item}) => {
     const{name,email,image,numberOfStudents,expertise}=item
     return (
-        <div className='p-4 bg-cyan-800 rounded-lg'>
+        <div className='p-4 hover:bg-cyan-950 bg-cyan-800 rounded-lg'>
             <div className='grid lg:grid-cols-2'>
                 <img className='w-60 rounded-2xl' src={image} alt="" />
                <div className='sm:text-center text-white font-bold  mt-10'>
