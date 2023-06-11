@@ -1,13 +1,37 @@
 import React from 'react';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt, FaUserShield } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import Title from '../../../Hooks/Title';
+import Swal from 'sweetalert2';
 
 const AllUser = () => {
     const {data: users = [],refetch}=useQuery(['users'],async()=>{
         const res = await fetch('http://localhost:5100/users')
         return res.json()
     })
+ 
+    const handleMakeAdmin=item=>{
+        fetch(`http://localhost:5100/users/admin/${item._id}`,{
+            method:"PATCH"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            if(data.modifiedCount){
+                refetch()
+                Swal.fire({
+                    position:'top-end',
+                    icon: 'success',
+                    title:  `${item.name} as a Admin`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
+
+
+
     return (
         <div className='w-full'>
             
@@ -49,7 +73,10 @@ const AllUser = () => {
         {item.name}
       </td>
       <td>{item.email}</td>
-      <td>student</td>
+      <td>{
+        item.role == 'admin'?'admin': 
+        <button onClick={()=>handleMakeAdmin(item)} className="btn btn-ghost btn-lg text-white  bg-cyan-700 "><FaUserShield></FaUserShield></button>
+        }</td>
        
        
       <td>
