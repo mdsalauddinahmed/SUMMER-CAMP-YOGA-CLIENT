@@ -5,7 +5,7 @@ import Title from '../../Hooks/Title';
 const OurClasses = () => {
     const [allClasses,setAllClasses]=useState([])
     useEffect(() => {
-        fetch("http://localhost:5100/allClasses")
+        fetch("https://mindful-bliss-server.vercel.app/allClasses")
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

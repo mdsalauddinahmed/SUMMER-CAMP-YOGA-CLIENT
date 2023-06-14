@@ -37,7 +37,7 @@ const Banner = () => {
       >
         <SwiperSlide style={slideStyle}  >
              <div className="h-[600px] ">
-             <div className="text-white opacity-50 p-8   bg-cyan-900  max-w-7xl mx-24 mt-28">
+             <div className="text-white opacity-50 p-8   bg-cyan-900  max-w-7xl   mt-28">
               <h1 className="text-4xl font-bold">"Discover the Art of Mindful Movement: Yoga for Body and Soul"</h1>
               <p className="my-10">We believe that yoga is not just a physical practice but a path to self-discovery and personal growth. It offers a sanctuary where you can quiet the noise of the outside world, tune into your inner wisdom, and embrace a sense of tranquility and mindfulness. Through regular practice, you will witness the transformative power of yoga unfold in your life, promoting a greater sense of well-being, clarity of mind, and harmony in all aspects of your existence.</p>
               <button className="btn bg-cyan-950 text-white ">Join Us</button>

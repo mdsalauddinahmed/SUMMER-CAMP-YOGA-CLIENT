@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import UseTanstack from '../../../Hooks/UseTanstack/UseTanstack';
+ 
 import Title from '../../../Hooks/Title';
+import UseTanStack from '../../../Hooks/UseTanStack';
 
 const AllClasses = () => {
-    const [,refetch]=UseTanstack()
+    const [cart,refetch]=UseTanStack()
     const [allClasses,setAllClasses]=useState([])
 
      
@@ -13,7 +14,7 @@ const AllClasses = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5100/allClasses")
+        fetch("https://mindful-bliss-server.vercel.app/allClasses")
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -32,7 +33,7 @@ const AllClasses = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5100/allClasses/${item._id}`,{
+              fetch(`https://mindful-bliss-server.vercel.app/${item._id}`,{
                 method:"DELETE",
                 headers:{
 

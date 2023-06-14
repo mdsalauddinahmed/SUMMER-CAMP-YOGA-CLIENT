@@ -1,10 +1,12 @@
 import React from 'react';
-import UseTanstack from '../../../Hooks/UseTanstack/UseTanstack';
+ 
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import UseTanStack from '../../../Hooks/UseTanStack';
 
 const AddCart = () => {
-    const [cart,refetch]=UseTanstack()
+     const [cart,refetch]=UseTanStack()
     const handleDelete = item =>{
         Swal.fire({
             title: 'Are you sure?',
@@ -16,7 +18,7 @@ const AddCart = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5100/purchase/${item._id}`,{
+              fetch(`https://mindful-bliss-server.vercel.app/purchase/${item._id}`,{
                 method:"DELETE",
                 headers:{
 
@@ -40,11 +42,11 @@ const AddCart = () => {
     }
     const total =cart.reduce((sum,item)=>item.Price+sum,0)
     return (
-        <div>
-        <div className='flex gap-28 font-bold'>
+        <div className='w-full'>
+        <div className='flex  justify-around font-bold'>
             <h2>Total Class Item: {cart?.length} </h2>
             <p>Total Price: ${total}</p>
-            <button className='btn text-white bg-cyan-700 btn-sm'>pay</button>
+           
         </div>
         
           
@@ -61,6 +63,7 @@ const AddCart = () => {
     
         <th>Price</th>
         <th>Action</th>
+        <th>Payment</th>
       </tr>
     </thead>
     <tbody className='sticky'>
@@ -78,6 +81,9 @@ const AddCart = () => {
       <td className='text-start'>${item.Price}</td>
       <td>
         <button onClick={()=>handleDelete(item)} className="btn btn-ghost btn-lg text-white  bg-cyan-700 "><FaTrashAlt></FaTrashAlt></button>
+      </td>
+      <td>
+      <Link to="/dashboard/pay"><button className='btn text-white bg-cyan-700 btn-sm'>pay</button></Link>
       </td>
     </tr> )
       }

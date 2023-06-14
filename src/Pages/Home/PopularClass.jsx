@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Title from '../../Hooks/Title';
-import img1 from '../../assets/support.png'
+ 
 import SinglePopularClass from './SinglePopularClass';
 
 const PopularClass = () => {
 
     const [allClasses,setAllClasses]=useState([])
     useEffect(() => {
-        fetch("http://localhost:5100/allClasses")
+        fetch("https://mindful-bliss-server.vercel.app/allClasses")
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

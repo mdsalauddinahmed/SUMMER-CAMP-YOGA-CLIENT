@@ -20,7 +20,7 @@ const Navbar = () => {
         </li>
         <li><Link to="/instructors">Our Instructor</Link></li>
       {
-        user?<li><Link className='me-4' to="/dashboard">Dashboard</Link></li>:" "
+        user?<li><Link className='me-4' to="/dashboard">{user?.name}Dashboard</Link></li>:" "
       }
     </>
     const LogItem= <>

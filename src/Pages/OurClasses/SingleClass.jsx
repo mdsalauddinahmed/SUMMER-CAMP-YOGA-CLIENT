@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
 const SingleClass = ({item}) => {
-
+     const[buy,setBuy]=useState(false)
     const{Price,seats,email,_id,name,category}=item
     const {user} =useContext(AuthContext)
     const navigate =useNavigate()
@@ -13,7 +13,7 @@ const SingleClass = ({item}) => {
         
          if(user){
             const orderClass ={ClassId:_id,Price,seats,email:user?.email,name,category}
-            fetch(`http://localhost:5100/purchase`,{
+            fetch(`https://mindful-bliss-server.vercel.app/purchase`,{
                 method:"post",
                 headers:{
                     "content-type":"application/json"
@@ -31,6 +31,7 @@ const SingleClass = ({item}) => {
                         showConfirmButton: false,
                         timer: 1500
                       })
+                      setBuy(true)
                 }
             })
          }
@@ -66,7 +67,7 @@ const SingleClass = ({item}) => {
     </div>
       
     <div className="card-actions justify-center">
-      <button onClick={()=>handlePurchase(item)} className="btn bg-cyan-800 text-white">Purchase Now</button>
+      <button disabled={buy} onClick={()=>handlePurchase(item)} className="btn bg-cyan-800 text-white">Purchase Now</button>
     </div>
   </div>
 </div>

@@ -10,11 +10,15 @@ import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import AddCart from "../Pages/Dashboard/AddCart/AddCart";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import AllClasses from "../Pages/Dashboard/AllClasses/AllClasses";
+import Payment from "../Pages/Dashboard/Payment/Payment";
+import PayForm from "../Pages/Dashboard/Payment/PayForm";
+import ErrorPage from "../Pages/ErrorPag/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:"/",
@@ -41,6 +45,7 @@ const router = createBrowserRouter([
     {
       path:'dashboard',
       element:<Dashboard></Dashboard>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path:'addClass',
@@ -53,6 +58,14 @@ const router = createBrowserRouter([
         {
           path:'addCart',
           element:<AddCart></AddCart>
+        },
+        {
+          path:'pay',
+          element:<PayForm></PayForm>
+        },
+        {
+          path:'payment',
+          element:<Payment/>
         },
         {
           path:'allUsers',

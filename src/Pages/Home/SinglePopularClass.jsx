@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
 const SinglePopularClass = ({item}) => {
+  const[buy,setBuy]=useState(false)
     const{user}=useContext(AuthContext)
     const navigate = useNavigate()
     const {image,Price,seats,category,name,_id}=item
@@ -29,6 +30,7 @@ const SinglePopularClass = ({item}) => {
                        showConfirmButton: false,
                        timer: 1500
                      })
+                     setBuy(true)
                }
            })
         }
@@ -61,7 +63,7 @@ const SinglePopularClass = ({item}) => {
       <div className="text-white border-1">Price: ${Price}</div>
     </div>
     <div className="card-actions justify-center">
-      <button onClick={()=>handlePurchase(item)} className="btn hover:bg-cyan-500 bg-cyan-800 text-white">Purchase Now</button>
+      <button disabled={buy} onClick={()=>handlePurchase(item)} className="btn hover:bg-cyan-500 bg-cyan-800 text-white">Purchase Now</button>
     </div>
   </div>
 </div>
